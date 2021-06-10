@@ -1,3 +1,4 @@
+tl;dr: it's a modification of this repository: https://github.com/prubach/gs-accessing-data-jpa/tree/rest
 ---
 tags: [spring-data, jpa]
 projects: [spring-data-jpa]
