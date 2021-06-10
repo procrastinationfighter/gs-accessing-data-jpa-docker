@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  mariadb:
+    # źródło:
+    # https://github.com/mybb/docker-compose/blob/master/docker-compose.yml.mariadb.example
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bank
+      MYSQL_USER: bank
+      MYSQL_PASSWORD: banksecret
+    logging:
+      driver: syslog
+    restart: on-failure
+    volumes:
+      - ${PWD}/mariadb:/var/lib/mysql
+  bankapp:
+    build: complete/.
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./complete:/io
+    depends_on:
+      - "mariadb"
